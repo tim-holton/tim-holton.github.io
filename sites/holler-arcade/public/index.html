@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Holler Arcade is a haunted roadside game cabinet with motel neon, steel guitar static, and moonlit county-fair energy."
+    />
+    <title>Holler Arcade</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-scene="delta">
+    <div class="fx-scanlines" aria-hidden="true"></div>
+    <div class="fx-vignette" aria-hidden="true"></div>
+    <div class="starfield" id="starfield" aria-hidden="true"></div>
+
+    <header class="marquee-panel" id="top">
+      <div class="marquee-copy">
+        <p class="boot-text">route 88 cartridge / one-off build / independent signal</p>
+        <h1 class="marquee-title">
+          <span>HOLLER</span>
+          <span>ARCADE</span>
+        </h1>
+        <p class="marquee-blurb">
+          A haunted county-fair cabinet tuned to steel guitar, motel neon, and
+          moonlit dust.
+        </p>
+      </div>
+
+      <nav class="wayfinding" aria-label="Primary">
+        <a href="#cabinet">Cabinet</a>
+        <a href="#modes">Modes</a>
+        <a href="#booking">Booking</a>
+      </nav>
+
+      <aside class="status-cluster" aria-label="System status">
+        <div class="status-pill">
+          <span>signal</span>
+          <strong id="signal-label">Delta Glow</strong>
+        </div>
+        <div class="status-pill">
+          <span>latency</span>
+          <strong id="latency-label">12ms twang</strong>
+        </div>
+        <button class="shuffle-button" id="shuffle-scene" type="button">
+          shuffle scene
+        </button>
+      </aside>
+    </header>
+
+    <main class="playfield">
+      <section class="screen-stage" id="cabinet">
+        <div class="cabinet-frame">
+          <div class="cabinet-glass">
+            <div class="sun-disc"></div>
+            <div class="mesa mesa-back"></div>
+            <div class="mesa mesa-mid"></div>
+            <div class="mesa mesa-front"></div>
+            <div class="fence-line"></div>
+
+            <div class="screen-hud">
+              <p class="screen-kicker" id="scene-kicker">Mode 01 / Delta Glow</p>
+              <h2 class="screen-title" id="scene-title">TRUCKSTOP DREAM ENGINE</h2>
+              <p class="screen-copy" id="scene-copy">
+                A truckstop sign, a pedal steel, and a game board that thinks it
+                can summon weather.
+              </p>
+            </div>
+
+            <div class="equalizer" id="equalizer" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="control-strip" aria-hidden="true">
+          <p class="control-label">player one / tim holton</p>
+          <div class="control-orbs">
+            <span class="control-orb"></span>
+            <span class="control-orb"></span>
+            <span class="control-orb"></span>
+            <span class="control-orb"></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="mode-grid" id="modes">
+        <article class="mode-card">
+          <p class="mode-id">MODE A</p>
+          <h3>Porchlight Fever</h3>
+          <p>
+            Warm bulbs, busted speakers, and a chorus line of fireflies
+            pretending to be pixels.
+          </p>
+        </article>
+        <article class="mode-card">
+          <p class="mode-id">MODE B</p>
+          <h3>Vacancy Choir</h3>
+          <p>
+            Motel signage blinks in triplets while the bass line rolls behind
+            the ice machine.
+          </p>
+        </article>
+        <article class="mode-card">
+          <p class="mode-id">MODE C</p>
+          <h3>Moonlit Tractor Pull</h3>
+          <p>
+            Chrome glints, dirt kicks up, and the scoreboard looks one storm away
+            from becoming myth.
+          </p>
+        </article>
+      </section>
+
+      <section class="junction-grid">
+        <article class="route-console">
+          <p class="console-label">Route map</p>
+          <p class="console-copy">
+            Every scene in this cabinet rides a different roadside frequency.
+          </p>
+          <ul class="route-list">
+            <li class="route-chip is-active">Delta Glow</li>
+            <li class="route-chip">Motel Violet</li>
+            <li class="route-chip">Haywire Gold</li>
+            <li class="route-chip">Gravel Mint</li>
+          </ul>
+        </article>
+
+        <div class="pixel-marsh-wrap">
+          <p class="console-label">Light spill</p>
+          <div class="pixel-marsh" id="pixel-marsh" aria-hidden="true"></div>
+        </div>
+
+        <article class="manifest-card">
+          <p class="console-label">Build rule</p>
+          <h3>No brutalism inside the cabinet.</h3>
+          <p>
+            Holler Arcade runs its own palette, cabinet frame, motion system, and
+            tone. This is a separate site object, not a filtered carry-over.
+          </p>
+          <a class="manifest-link" href="#booking">Open booking channel</a>
+        </article>
+      </section>
+
+      <section class="booking-bunker" id="booking">
+        <p class="booking-kicker">booking channel / open</p>
+        <h2>Need something stranger than portfolio furniture?</h2>
+        <p>
+          Build the thing that feels a little haunted, a little playful, and a
+          little too specific to have come from a template.
+        </p>
+        <span class="booking-mail">booking by request</span>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

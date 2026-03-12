@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Brutalist motion site for Tim Holton. Loud typography, sharp contrast, and kinetic interactions."
+    />
+    <title>Tim Holton</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="wordmark" href="#top">TIM/HOLTON</a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#work">Work</a>
+        <a href="#signal">Signal</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <p class="eyebrow" data-reveal>Static site. No bloat. Maximum volume.</p>
+        <div class="hero-stack">
+          <div class="hero-line hero-line-a" data-parallax="-0.08">BRUTALIST</div>
+          <div class="hero-line hero-line-b" data-parallax="0.12">MOTION</div>
+          <div class="hero-line hero-line-c" data-parallax="-0.04">SYSTEM</div>
+        </div>
+        <div class="hero-grid">
+          <aside class="hero-card" data-reveal>
+            <p class="label">MODE</p>
+            <p>Sharp typography. Hard cuts. Deliberate chaos.</p>
+          </aside>
+          <aside class="hero-card offset" data-reveal>
+            <p class="label">BUILD</p>
+            <p>Pure HTML, CSS, and JavaScript deployed straight to GitHub Pages.</p>
+          </aside>
+        </div>
+        <div class="ticker" aria-label="Announcement">
+          <div class="ticker-track">
+            <span>LOUD LAYOUTS</span>
+            <span>RIGID GRIDS</span>
+            <span>JOLT TRANSITIONS</span>
+            <span>SCANLINE ENERGY</span>
+            <span>LOUD LAYOUTS</span>
+            <span>RIGID GRIDS</span>
+            <span>JOLT TRANSITIONS</span>
+            <span>SCANLINE ENERGY</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="manifesto section-cut" id="signal">
+        <div class="section-kicker" data-reveal>01 / SIGNAL</div>
+        <div class="manifesto-copy">
+          <p class="manifesto-statement" data-reveal>
+            This is a site that behaves like a poster got tired of staying flat.
+          </p>
+          <p data-reveal>
+            The stack is intentionally simple so the experience can stay aggressive:
+            oversized type, rhythmic scroll motion, live hover response, and zero dependency on a backend.
+          </p>
+        </div>
+        <div class="stamp-grid">
+          <div class="stamp is-live">FAST</div>
+          <div class="stamp">RAW</div>
+          <div class="stamp">STATIC</div>
+          <div class="stamp">LOUD</div>
+        </div>
+      </section>
+
+      <section class="work section-cut" id="work">
+        <div class="section-kicker" data-reveal>02 / BLOCKS</div>
+        <div class="project-grid">
+          <article class="project-card" data-reveal>
+            <p class="project-index">A1</p>
+            <h2>Hero Impact</h2>
+            <p>
+              Massive display type with layered parallax so the page feels physical before you click anything.
+            </p>
+          </article>
+          <article class="project-card" data-reveal>
+            <p class="project-index">B2</p>
+            <h2>Grid Pressure</h2>
+            <p>
+              Strict modular spacing, harsh borders, and blocks that snap into view as you move through the page.
+            </p>
+          </article>
+          <article class="project-card" data-reveal>
+            <p class="project-index">C3</p>
+            <h2>Motion Noise</h2>
+            <p>
+              Lightweight animation loops, timed stamp pulses, and hover offsets without a framework.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="contact section-cut" id="contact">
+        <div class="section-kicker" data-reveal>03 / CONTACT</div>
+        <div class="contact-wrap">
+          <p class="contact-copy" data-reveal>
+            Need a page with more attitude than politeness? Start here.
+          </p>
+          <p class="contact-link" data-reveal>Contact on request</p>
+        </div>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

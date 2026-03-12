@@ -1,0 +1,10 @@
+{
+  "active_site": "holler-arcade",
+  "name": "Holler Arcade",
+  "managed_paths": [
+    ".nojekyll",
+    "index.html",
+    "script.js",
+    "styles.css"
+  ]
+}
