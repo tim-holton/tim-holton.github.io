@@ -1,133 +1,179 @@
 const body = document.body;
-const signalLabel = document.querySelector("#signal-label");
-const latencyLabel = document.querySelector("#latency-label");
-const sceneKicker = document.querySelector("#scene-kicker");
+const stageWindow = document.querySelector("#stage-window");
+const fireflyField = document.querySelector("#firefly-field");
+const pineBack = document.querySelector("#pine-back");
+const pineFront = document.querySelector("#pine-front");
+const noteDrift = document.querySelector("#note-drift");
+const turnDial = document.querySelector("#turn-dial");
+const sceneLabel = document.querySelector("#scene-label");
 const sceneTitle = document.querySelector("#scene-title");
 const sceneCopy = document.querySelector("#scene-copy");
-const shuffleButton = document.querySelector("#shuffle-scene");
-const routeChips = [...document.querySelectorAll(".route-chip")];
-const equalizerBars = [...document.querySelectorAll("#equalizer span")];
-const starfield = document.querySelector("#starfield");
-const pixelMarsh = document.querySelector("#pixel-marsh");
+const toneBars = [...document.querySelectorAll("#tone-bars span")];
+const depthLayers = [...document.querySelectorAll("[data-depth]")];
+const readoutScene = document.querySelector("#readout-scene");
+const readoutPines = document.querySelector("#readout-pines");
+const readoutFireflies = document.querySelector("#readout-fireflies");
+const readoutSprites = document.querySelector("#readout-sprites");
+const readoutDrift = document.querySelector("#readout-drift");
 
 const scenes = [
   {
     id: "delta",
-    signal: "Delta Glow",
-    latency: "12ms twang",
-    kicker: "Mode 01 / Delta Glow",
-    title: "TRUCKSTOP DREAM ENGINE",
-    copy: "A truckstop sign, a pedal steel, and a game board that thinks it can summon weather.",
-    route: 0,
+    label: "Porch Pickin at Sundown",
+    title: "The porch is humming and the mountain keeps time.",
+    copy: "Holler Arcade is an art project with one boot on the porch boards and the other on a render pass.",
   },
   {
-    id: "motel",
-    signal: "Motel Violet",
-    latency: "9ms shimmer",
-    kicker: "Mode 02 / Motel Violet",
-    title: "CHECK-IN FOR THE GHOST BAND",
-    copy: "Vacancy bulbs blink in triplets while the bass line rolls behind the ice machine.",
-    route: 1,
+    id: "creek",
+    label: "Creekbank After the Rain",
+    title: "The water runs cool and the code runs crooked on purpose.",
+    copy: "This version leans into the softer side of the machine, where bluegrass memory and little visual tricks are carrying the same tune.",
   },
   {
-    id: "haywire",
-    signal: "Haywire Gold",
-    latency: "16ms sparks",
-    kicker: "Mode 03 / Haywire Gold",
-    title: "TRACTOR PULL AFTER MIDNIGHT",
-    copy: "Everything smells like ozone, dirt, and a speaker cabinet that survived one too many county fairs.",
-    route: 2,
+    id: "truck",
+    label: "Truck Bed Full of Racket",
+    title: "There is dirt on the floorboards and light in all the wrong places.",
+    copy: "The humor comes from treating an old truck, a banjo, and a sprite stack like they all belong in the same sacred mess.",
   },
   {
-    id: "gravel",
-    signal: "Gravel Mint",
-    latency: "11ms drift",
-    kicker: "Mode 04 / Gravel Mint",
-    title: "FIRELINE ON THE SERVICE ROAD",
-    copy: "Cool neon bleeds into the fence line while the cabinet hums like it knows where the backroads go.",
-    route: 3,
+    id: "moon",
+    label: "Moonrise Over the Log Cabin",
+    title: "By midnight the whole holler starts acting like a game engine.",
+    copy: "This is the fever-dream cut, where the critters get bold, the shadows get dramatic, and the technology shows its teeth a little.",
   },
 ];
 
 let activeSceneIndex = 0;
 
-function buildStarfield() {
-  if (!starfield || starfield.children.length > 0) {
+function buildPines(container, count, minHeight, maxHeight) {
+  if (!container || container.children.length > 0) {
     return;
   }
 
-  for (let index = 0; index < 44; index += 1) {
-    const star = document.createElement("span");
-    star.style.setProperty("--x", `${Math.random() * 100}%`);
-    star.style.setProperty("--y", `${Math.random() * 72}%`);
-    star.style.setProperty("--size", `${Math.random() * 0.22 + 0.08}rem`);
-    star.style.setProperty("--delay", `${Math.random() * 3}s`);
-    star.style.setProperty("--speed", `${Math.random() * 2 + 1.8}s`);
-    starfield.appendChild(star);
+  for (let index = 0; index < count; index += 1) {
+    const pine = document.createElement("span");
+    pine.style.setProperty("--x", `${(index / (count - 1)) * 100}%`);
+    pine.style.setProperty("--height", `${Math.random() * (maxHeight - minHeight) + minHeight}%`);
+    pine.style.setProperty("--width", `${Math.random() * 2 + 2.6}rem`);
+    pine.style.setProperty("--squash", `${Math.random() * 0.22 + 0.92}`);
+    container.appendChild(pine);
   }
 }
 
-function buildPixelMarsh() {
-  if (!pixelMarsh || pixelMarsh.children.length > 0) {
+function buildFireflies() {
+  if (!fireflyField || fireflyField.children.length > 0) {
     return;
   }
 
-  for (let index = 0; index < 70; index += 1) {
-    pixelMarsh.appendChild(document.createElement("span"));
+  for (let index = 0; index < 24; index += 1) {
+    const spark = document.createElement("span");
+    spark.style.setProperty("--x", `${Math.random() * 100}%`);
+    spark.style.setProperty("--y", `${Math.random() * 68 + 6}%`);
+    spark.style.setProperty("--size", `${Math.random() * 0.32 + 0.12}rem`);
+    spark.style.setProperty("--delay", `${Math.random() * 3}s`);
+    spark.style.setProperty("--speed", `${Math.random() * 2 + 1.8}s`);
+    fireflyField.appendChild(spark);
   }
 }
 
-function pulseEqualizer() {
-  for (const bar of equalizerBars) {
-    bar.style.setProperty("--level", `${Math.floor(Math.random() * 8) + 1}`);
+function buildNotes() {
+  if (!noteDrift || noteDrift.children.length > 0) {
+    return;
+  }
+
+  const glyphs = ["*", "+", "~", "o", "^"];
+  for (let index = 0; index < 12; index += 1) {
+    const note = document.createElement("span");
+    note.textContent = glyphs[index % glyphs.length];
+    note.style.setProperty("--x", `${Math.random() * 56 + 28}%`);
+    note.style.setProperty("--y", `${Math.random() * 28 + 34}%`);
+    note.style.setProperty("--size", `${Math.random() * 0.8 + 0.8}rem`);
+    note.style.setProperty("--delay", `${Math.random() * 2.4}s`);
+    note.style.setProperty("--speed", `${Math.random() * 4 + 4}s`);
+    noteDrift.appendChild(note);
   }
 }
 
-function pulsePixelMarsh() {
-  const cells = [...pixelMarsh.querySelectorAll("span")];
-  for (const cell of cells) {
-    cell.classList.remove("is-lit", "is-cool");
-    const roll = Math.random();
-    if (roll > 0.86) {
-      cell.classList.add("is-lit");
-    } else if (roll > 0.72) {
-      cell.classList.add("is-cool");
-    }
+function pulseBars() {
+  for (const bar of toneBars) {
+    bar.style.setProperty("--level", `${Math.floor(Math.random() * 7) + 1}`);
   }
 }
 
 function renderScene(scene) {
   body.dataset.scene = scene.id;
-  signalLabel.textContent = scene.signal;
-  latencyLabel.textContent = scene.latency;
-  sceneKicker.textContent = scene.kicker;
+  sceneLabel.textContent = scene.label;
   sceneTitle.textContent = scene.title;
   sceneCopy.textContent = scene.copy;
-
-  for (const [index, chip] of routeChips.entries()) {
-    chip.classList.toggle("is-active", index === scene.route);
+  if (readoutScene) {
+    readoutScene.textContent = scene.id;
   }
 }
 
-function shuffleScene() {
-  let nextIndex = activeSceneIndex;
-  while (nextIndex === activeSceneIndex && scenes.length > 1) {
-    nextIndex = Math.floor(Math.random() * scenes.length);
-  }
-
-  activeSceneIndex = nextIndex;
+function cycleScene() {
+  activeSceneIndex = (activeSceneIndex + 1) % scenes.length;
   renderScene(scenes[activeSceneIndex]);
 }
 
-buildStarfield();
-buildPixelMarsh();
+function handlePointerMove(event) {
+  if (!stageWindow) {
+    return;
+  }
+
+  const bounds = stageWindow.getBoundingClientRect();
+  const offsetX = (event.clientX - bounds.left) / bounds.width - 0.5;
+  const offsetY = (event.clientY - bounds.top) / bounds.height - 0.5;
+
+  for (const layer of depthLayers) {
+    const depth = Number(layer.dataset.depth || 0);
+    const moveX = offsetX * depth * 90;
+    const moveY = offsetY * depth * 70;
+    layer.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
+  }
+
+  if (readoutDrift) {
+    const driftX = Math.round(offsetX * 100);
+    const driftY = Math.round(offsetY * 100);
+    readoutDrift.textContent = `x:${driftX >= 0 ? "+" : ""}${driftX} y:${driftY >= 0 ? "+" : ""}${driftY}`;
+  }
+}
+
+function resetParallax() {
+  for (const layer of depthLayers) {
+    layer.style.transform = "translate3d(0, 0, 0)";
+  }
+
+  if (readoutDrift) {
+    readoutDrift.textContent = "idle";
+  }
+}
+
+buildPines(pineBack, 18, 28, 56);
+buildPines(pineFront, 22, 34, 72);
+buildFireflies();
+buildNotes();
 renderScene(scenes[activeSceneIndex]);
-pulseEqualizer();
-pulsePixelMarsh();
+pulseBars();
 
-window.setInterval(pulseEqualizer, 1200);
-window.setInterval(pulsePixelMarsh, 850);
+if (readoutPines) {
+  readoutPines.textContent = String((pineBack?.children.length || 0) + (pineFront?.children.length || 0));
+}
 
-if (shuffleButton) {
-  shuffleButton.addEventListener("click", shuffleScene);
+if (readoutFireflies) {
+  readoutFireflies.textContent = String(fireflyField?.children.length || 0);
+}
+
+if (readoutSprites) {
+  readoutSprites.textContent = String(document.querySelectorAll(".sprite").length);
+}
+
+window.setInterval(pulseBars, 1200);
+
+if (turnDial) {
+  turnDial.addEventListener("click", cycleScene);
+}
+
+if (stageWindow) {
+  stageWindow.addEventListener("pointermove", handlePointerMove);
+  stageWindow.addEventListener("pointerleave", resetParallax);
 }

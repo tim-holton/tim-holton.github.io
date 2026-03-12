@@ -5,164 +5,177 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Holler Arcade is a haunted roadside game cabinet with motel neon, steel guitar static, and moonlit county-fair energy."
+      content="Holler Arcade is an Appalachian 2.5D art project built from porch memory, sprites, and code behaving like folk craft."
     />
     <title>Holler Arcade</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&family=Unna:ital,wght@0,700;1,700&display=swap"
+    />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body data-scene="delta">
-    <div class="fx-scanlines" aria-hidden="true"></div>
-    <div class="fx-vignette" aria-hidden="true"></div>
-    <div class="starfield" id="starfield" aria-hidden="true"></div>
+    <div class="grain-layer" aria-hidden="true"></div>
+    <div class="scanline-layer" aria-hidden="true"></div>
+    <div class="vignette-layer" aria-hidden="true"></div>
 
-    <header class="marquee-panel" id="top">
-      <div class="marquee-copy">
-        <p class="boot-text">route 88 cartridge / one-off build / independent signal</p>
-        <h1 class="marquee-title">
-          <span>HOLLER</span>
-          <span>ARCADE</span>
-        </h1>
-        <p class="marquee-blurb">
-          A haunted county-fair cabinet tuned to steel guitar, motel neon, and
-          moonlit dust.
-        </p>
-      </div>
-
-      <nav class="wayfinding" aria-label="Primary">
-        <a href="#cabinet">Cabinet</a>
-        <a href="#modes">Modes</a>
-        <a href="#booking">Booking</a>
-      </nav>
-
-      <aside class="status-cluster" aria-label="System status">
-        <div class="status-pill">
-          <span>signal</span>
-          <strong id="signal-label">Delta Glow</strong>
-        </div>
-        <div class="status-pill">
-          <span>latency</span>
-          <strong id="latency-label">12ms twang</strong>
-        </div>
-        <button class="shuffle-button" id="shuffle-scene" type="button">
-          shuffle scene
-        </button>
-      </aside>
+    <header class="masthead">
+      <p class="sigil">appalachian art project / porch engine / code as craft</p>
+      <h1 class="wordmark">
+        <span>HOLLER</span>
+        <span>ARCADE</span>
+      </h1>
+      <p class="lede">
+        Pull up a stump. Half this thing lives in the hills. The other half
+        lives in the way the hills are stitched together.
+      </p>
     </header>
 
-    <main class="playfield">
-      <section class="screen-stage" id="cabinet">
-        <div class="cabinet-frame">
-          <div class="cabinet-glass">
-            <div class="sun-disc"></div>
-            <div class="mesa mesa-back"></div>
-            <div class="mesa mesa-mid"></div>
-            <div class="mesa mesa-front"></div>
-            <div class="fence-line"></div>
+    <main class="experience">
+      <section class="holler-stage">
+        <div class="stage-window" id="stage-window">
+          <div class="sky-haze"></div>
+          <div class="sun-or-moon"></div>
+          <div class="firefly-field" id="firefly-field" aria-hidden="true"></div>
+          <div class="mountain-ridge ridge-back" data-depth="0.08"></div>
+          <div class="mountain-ridge ridge-mid" data-depth="0.16"></div>
+          <div class="pine-belt pine-belt-back" id="pine-back" data-depth="0.25"></div>
+          <div class="pine-belt pine-belt-front" id="pine-front" data-depth="0.36"></div>
+          <div class="ground-ridge" data-depth="0.46"></div>
+          <div class="dust-path" data-depth="0.54"></div>
+          <div class="sprite sprite-cabin" data-depth="0.58">
+            <span class="porch-lamp"></span>
+          </div>
+          <div class="sprite sprite-truck" data-depth="0.66"></div>
+          <div class="sprite sprite-banjo" data-depth="0.7"></div>
+          <div class="sprite sprite-critter critter-raccoon" data-depth="0.76"></div>
+          <div class="sprite sprite-critter critter-possum" data-depth="0.84"></div>
+          <div class="note-drift" id="note-drift" aria-hidden="true"></div>
 
-            <div class="screen-hud">
-              <p class="screen-kicker" id="scene-kicker">Mode 01 / Delta Glow</p>
-              <h2 class="screen-title" id="scene-title">TRUCKSTOP DREAM ENGINE</h2>
-              <p class="screen-copy" id="scene-copy">
-                A truckstop sign, a pedal steel, and a game board that thinks it
-                can summon weather.
-              </p>
-            </div>
-
-            <div class="equalizer" id="equalizer" aria-hidden="true">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
+          <div class="stage-copy">
+            <p class="scene-label" id="scene-label">Porch Pickin at Sundown</p>
+            <h2 class="scene-title" id="scene-title">
+              The porch is humming and the mountain keeps time.
+            </h2>
+            <p class="scene-copy" id="scene-copy">
+              Holler Arcade is an art project with one boot on the porch boards
+              and the other on a render pass.
+            </p>
           </div>
         </div>
 
-        <div class="control-strip" aria-hidden="true">
-          <p class="control-label">player one / tim holton</p>
-          <div class="control-orbs">
-            <span class="control-orb"></span>
-            <span class="control-orb"></span>
-            <span class="control-orb"></span>
-            <span class="control-orb"></span>
+        <div class="dial-rack">
+          <button class="dial-button" id="turn-dial" type="button">
+            turn the dial
+          </button>
+          <p class="dial-text">
+            Press it and the holler changes its mind the same way the sky does
+            when the tune turns over.
+          </p>
+          <div class="tone-bars" id="tone-bars" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="machine-panel" aria-live="polite">
+            <p class="machine-label">porch engine readout</p>
+            <dl class="machine-readout">
+              <div>
+                <dt>scene</dt>
+                <dd id="readout-scene">delta</dd>
+              </div>
+              <div>
+                <dt>pines</dt>
+                <dd id="readout-pines">40</dd>
+              </div>
+              <div>
+                <dt>fireflies</dt>
+                <dd id="readout-fireflies">24</dd>
+              </div>
+              <div>
+                <dt>sprites</dt>
+                <dd id="readout-sprites">5</dd>
+              </div>
+              <div>
+                <dt>drift</dt>
+                <dd id="readout-drift">idle</dd>
+              </div>
+            </dl>
           </div>
         </div>
       </section>
 
-      <section class="mode-grid" id="modes">
-        <article class="mode-card">
-          <p class="mode-id">MODE A</p>
-          <h3>Porchlight Fever</h3>
+      <section class="truth-strip">
+        <article class="truth-card">
+          <p class="truth-kicker">What it is</p>
           <p>
-            Warm bulbs, busted speakers, and a chorus line of fireflies
-            pretending to be pixels.
+            Holler Arcade is Appalachian by memory, a little western by horizon
+            line, and playful enough to grin at its own boots.
           </p>
         </article>
-        <article class="mode-card">
-          <p class="mode-id">MODE B</p>
-          <h3>Vacancy Choir</h3>
+        <article class="truth-card">
+          <p class="truth-kicker">What it borrows</p>
           <p>
-            Motel signage blinks in triplets while the bass line rolls behind
-            the ice machine.
+            Hee Haw foolishness, Bill Monroe speed, George Jones ache, Doom
+            shadows, RollerCoaster Tycoon terrain, ASCII scrawl, and sprites
+            with dirt under their nails.
           </p>
         </article>
-        <article class="mode-card">
-          <p class="mode-id">MODE C</p>
-          <h3>Moonlit Tractor Pull</h3>
+        <article class="truth-card">
+          <p class="truth-kicker">Where the art lives</p>
           <p>
-            Chrome glints, dirt kicks up, and the scoreboard looks one storm away
-            from becoming myth.
+            Nearly half the picture is in the build itself: stacked layers,
+            tree generators, timing loops, hand-shaped ridges, and code doing
+            the same work a brush would do somewhere else.
           </p>
         </article>
       </section>
 
-      <section class="junction-grid">
-        <article class="route-console">
-          <p class="console-label">Route map</p>
-          <p class="console-copy">
-            Every scene in this cabinet rides a different roadside frequency.
-          </p>
-          <ul class="route-list">
-            <li class="route-chip is-active">Delta Glow</li>
-            <li class="route-chip">Motel Violet</li>
-            <li class="route-chip">Haywire Gold</li>
-            <li class="route-chip">Gravel Mint</li>
-          </ul>
-        </article>
-
-        <div class="pixel-marsh-wrap">
-          <p class="console-label">Light spill</p>
-          <div class="pixel-marsh" id="pixel-marsh" aria-hidden="true"></div>
+      <section class="artifact-tray">
+        <div class="artifact-copy">
+          <p class="artifact-label">Packed in the truck bed</p>
+          <div class="artifact-chipset">
+            <span class="artifact-chip">porch pickin</span>
+            <span class="artifact-chip">corn cob pipe</span>
+            <span class="artifact-chip">log cabin</span>
+            <span class="artifact-chip">mountains</span>
+            <span class="artifact-chip">trees and trees and trees</span>
+            <span class="artifact-chip">wild critters</span>
+            <span class="artifact-chip">farmin</span>
+            <span class="artifact-chip">trucks</span>
+            <span class="artifact-chip">banjos</span>
+            <span class="artifact-chip">pedal steel</span>
+            <span class="artifact-chip">dirt road</span>
+            <span class="artifact-chip">sprites</span>
+          </div>
         </div>
 
-        <article class="manifest-card">
-          <p class="console-label">Build rule</p>
-          <h3>No brutalism inside the cabinet.</h3>
-          <p>
-            Holler Arcade runs its own palette, cabinet frame, motion system, and
-            tone. This is a separate site object, not a filtered carry-over.
-          </p>
-          <a class="manifest-link" href="#booking">Open booking channel</a>
-        </article>
+        <pre class="ascii-rune" aria-label="ASCII cabin sign">
+    /\ 
+   /__\    holler hardware
+  /|  |\ 
+ /_|[]|_\
+   /  \
+  /____\
+        </pre>
       </section>
 
-      <section class="booking-bunker" id="booking">
-        <p class="booking-kicker">booking channel / open</p>
-        <h2>Need something stranger than portfolio furniture?</h2>
+      <section class="closing-note">
         <p>
-          Build the thing that feels a little haunted, a little playful, and a
-          little too specific to have come from a template.
+          No funnel. No pitch. Just a made thing sitting there warm as a porch
+          light, glad you stopped by.
         </p>
-        <span class="booking-mail">booking by request</span>
       </section>
     </main>
 
